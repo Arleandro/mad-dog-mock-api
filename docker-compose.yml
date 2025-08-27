@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  maddogmock:
+    build: .
+    image: mad-dog-mock:2.0.0
+    environment:
+      - CORS_ALLOW_ORIGINS=*
+      - APP_TITLE=Mad Dog Mock
+      - APP_VERSION=2.0.0
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    restart: unless-stopped
+  mongo:
+    image: mongo:7
+    ports: ["27017:27017"]
+    restart: unless-stopped
